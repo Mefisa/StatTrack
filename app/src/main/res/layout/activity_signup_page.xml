@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login_Page">
+    tools:context=".SignupPage">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
             android:fontFamily="cursive"
             android:text="Submit"
             android:textColor="@color/colorAccent"
-            android:typeface="sans" />
+            android:typeface="sans"/>
     </LinearLayout>
 
 
