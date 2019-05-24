@@ -2,9 +2,13 @@ package com.heavylift.stattrack.stattrack;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class ExerciseDetailsActivity extends AppCompatActivity {
 
@@ -46,7 +50,51 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
         mUpdate_btn = (Button) findViewById(R.id.update_btn);
         mDelete_btn = (Button) findViewById(R.id.delete_btn);
         mBack_btn = (Button) findViewById(R.id.back_btn);
+
+        mUpdate_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Exercise exercise = new Exercise();
+                exercise.setName(mName_editTxt.getText().toString());
+                exercise.setReps(mReps_editTxt.getText().toString());
+                exercise.setSets(mSets_editTxt.getText().toString());
+                exercise.setRest_time(mRestTime_editText.getText().toString());
+
+                new FirebaseDatabaseHelper().updateExercise(key, exercise, new FirebaseDatabaseHelper.DataStatus() {
+                    @Override
+                    public void DataIsLoaded(List<Exercise> exercises, List<String> keys) {
+
+                    }
+
+                    @Override
+                    public void DataIsInserted() {
+
+                    }
+
+                    @Override
+                    public void DataIsUpdated() {
+                        Toast.makeText(ExerciseDetailsActivity.this, "Exercise has been" +
+                        " updated successfully.", Toast.LENGTH_LONG).show();
+
+                    }
+
+                    @Override
+                    public void DataIsDeleted() {
+
+                    }
+                });
+            }
+        });
+
+        mBack_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                return;
+            }
+        });
     }
+
 
     private int getIndex_SpinnerItem(Spinner spinner, String item){
         int index = 0;

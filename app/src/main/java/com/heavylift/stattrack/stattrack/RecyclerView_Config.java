@@ -52,6 +52,7 @@ public class RecyclerView_Config {
                     intent.putExtra("sets", mSets.getText().toString());
                     intent.putExtra("restTime", mRestTime.getText().toString());
 
+
                     mContext.startActivity(intent);
                 }
             });

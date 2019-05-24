@@ -16,7 +16,9 @@ public class NewExerciseActivity extends AppCompatActivity {
     private EditText mSets_editTxt;
     private EditText mReps_editTxt;
     private EditText mRestTime_editTxt;
+
     private Spinner mExercise_categories_spinner;
+
     private Button mAdd_btn;
     private Button mBack_btn;
 
@@ -51,8 +53,8 @@ public class NewExerciseActivity extends AppCompatActivity {
 
                     @Override
                     public void DataIsInserted() {
-                        Toast.makeText(NewExerciseActivity.this, "The exercise has been inserted sucessfully",
-                                Toast.LENGTH_LONG);
+                        Toast.makeText(NewExerciseActivity.this, "The exercise has been inserted successfully",
+                                Toast.LENGTH_LONG).show();
 
                     }
 
@@ -69,10 +71,12 @@ public class NewExerciseActivity extends AppCompatActivity {
 
             }
         });
+
         mBack_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); return;
+                finish();
+                return;
             }
         });
 
