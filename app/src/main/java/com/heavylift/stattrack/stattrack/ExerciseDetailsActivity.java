@@ -40,6 +40,8 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
         mSets_editTxt = (EditText) findViewById(R.id.sets_editTxt);
         mRestTime_editText = (EditText) findViewById(R.id.restTime_editTxt);
         mExercise_categories_spinner = (Spinner) findViewById(R.id.exercise_categories_spinner);
+        //mExercise_categories_spinner.setSelection(getIndex_SpinnerItem(mExercise_categories_spinner,
+        //        ));
 
         mUpdate_btn = (Button) findViewById(R.id.update_btn);
         mDelete_btn = (Button) findViewById(R.id.delete_btn);
@@ -49,8 +51,11 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
     private int getIndex_SpinnerItem(Spinner spinner, String item){
         int index = 0;
         for (int i = 0; i<spinner.getCount(); i++){
-
+            if(spinner.getItemAtPosition(i).equals(item)){
+                index = i;
+                break;
+            }
         }
-        return 0;
+        return index;
     }
 }
