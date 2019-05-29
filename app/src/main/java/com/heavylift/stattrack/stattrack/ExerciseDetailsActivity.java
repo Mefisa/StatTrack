@@ -86,7 +86,7 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
             }
         });
 
-        mUpdate_btn.setOnClickListener(new View.OnClickListener() {
+        mDelete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new FirebaseDatabaseHelper().deleteExercise(key, new FirebaseDatabaseHelper.DataStatus() {
