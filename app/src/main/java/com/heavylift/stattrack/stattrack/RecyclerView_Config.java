@@ -61,8 +61,8 @@ public class RecyclerView_Config {
         public void bind(Exercise exercise, String key) {
             mName.setText("exercise name: " + exercise.getName());
             mReps.setText("reps: " + exercise.getReps());
-            mSets.setText("sets: +" + exercise.getSets());
-            mRestTime.setText("rest time" + exercise.getRest_time());
+            mSets.setText("sets: " + exercise.getSets());
+            mRestTime.setText("rest time " + exercise.getRest_time());
             this.key = key;
         }
 
