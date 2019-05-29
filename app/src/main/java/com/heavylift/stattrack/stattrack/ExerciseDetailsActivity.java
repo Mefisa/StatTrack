@@ -78,6 +78,8 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
                     public void DataIsUpdated() {
                         Toast.makeText(ExerciseDetailsActivity.this, "Exercise has been" +
                         " updated successfully.", Toast.LENGTH_LONG).show();
+                        finish();
+                        return;
 
                     }
 
@@ -113,6 +115,7 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
                         Toast.makeText(ExerciseDetailsActivity.this,
                                 "Exercise record has been deleted successfully", Toast.LENGTH_LONG).show();
                         finish();
+                        return;
                     }
                 });
             }

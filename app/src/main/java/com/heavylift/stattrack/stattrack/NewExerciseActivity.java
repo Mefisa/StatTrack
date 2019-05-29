@@ -58,7 +58,8 @@ public class NewExerciseActivity extends AppCompatActivity {
                     public void DataIsInserted() {
                         Toast.makeText(NewExerciseActivity.this, "The exercise has been inserted successfully",
                                 Toast.LENGTH_LONG).show();
-
+                        finish();
+                        return;
                     }
 
                     @Override
