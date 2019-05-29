@@ -86,6 +86,35 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
             }
         });
 
+        mUpdate_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new FirebaseDatabaseHelper().deleteExercise(key, new FirebaseDatabaseHelper.DataStatus() {
+                    @Override
+                    public void DataIsLoaded(List<Exercise> exercises, List<String> keys) {
+
+                    }
+
+                    @Override
+                    public void DataIsInserted() {
+
+                    }
+
+                    @Override
+                    public void DataIsUpdated() {
+
+                    }
+
+                    @Override
+                    public void DataIsDeleted() {
+                        Toast.makeText(ExerciseDetailsActivity.this,
+                                "Exercise record has been deleted successfully", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                });
+            }
+        });
+
         mBack_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
