@@ -15,7 +15,8 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
     private EditText mName_editTxt;
     private EditText mReps_editTxt;
     private EditText mSets_editTxt;
-    private EditText mRestTime_editText;
+    private EditText mWeight_editTxt;
+    private EditText mRestTime_editTxt;
     private Spinner mExercise_categories_spinner;
 
     private Button mUpdate_btn;
@@ -42,7 +43,8 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
         mName_editTxt = (EditText) findViewById(R.id.name_editTxt);
         mReps_editTxt = (EditText) findViewById(R.id.reps_editTxt);
         mSets_editTxt = (EditText) findViewById(R.id.sets_editTxt);
-        mRestTime_editText = (EditText) findViewById(R.id.restTime_editTxt);
+        mRestTime_editTxt = (EditText) findViewById(R.id.restTime_editTxt);
+        mWeight_editTxt = (EditText) findViewById(R.id.weight_editTxt);
         mExercise_categories_spinner = (Spinner) findViewById(R.id.exercise_categories_spinner);
         //mExercise_categories_spinner.setSelection(getIndex_SpinnerItem(mExercise_categories_spinner,
         //        ));
@@ -58,7 +60,8 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
                 exercise.setName(mName_editTxt.getText().toString());
                 exercise.setReps(mReps_editTxt.getText().toString());
                 exercise.setSets(mSets_editTxt.getText().toString());
-                exercise.setRest_time(mRestTime_editText.getText().toString());
+                exercise.setRest_time(mRestTime_editTxt.getText().toString());
+                exercise.setWeight(mWeight_editTxt.getText().toString());
 
                 new FirebaseDatabaseHelper().updateExercise(key, exercise, new FirebaseDatabaseHelper.DataStatus() {
                     @Override

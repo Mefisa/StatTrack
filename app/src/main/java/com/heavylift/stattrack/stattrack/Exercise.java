@@ -4,16 +4,18 @@ public class Exercise {
     private String name;
     private String reps;
     private String sets;
+    private String weight;
     private String rest_time;
 
     public Exercise() {
     }
 
-    public Exercise(String name, String reps, String sets, String rest_time) {
+    public Exercise(String name, String reps, String sets, String rest_time, String weight) {
         this.name = name;
         this.reps = reps;
         this.sets = sets;
         this.rest_time = rest_time;
+        this.weight = weight;
     }
 
     public String getName() {
@@ -47,4 +49,8 @@ public class Exercise {
     public void setRest_time(String rest_time) {
         this.rest_time = rest_time;
     }
+
+    public String getWeight() { return weight; }
+
+    public void setWeight(String weight) { this.weight = weight; }
 }

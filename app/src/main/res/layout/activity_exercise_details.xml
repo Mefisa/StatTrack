@@ -61,19 +61,18 @@
     <Spinner
         android:id="@+id/exercise_categories_spinner"
         android:layout_width="220dp"
-        android:layout_height="50dp"
+        android:layout_height="47dp"
         android:layout_marginTop="8dp"
         android:entries="@array/exercise_categories"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restTime_editTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/weight_editTxt" />
 
     <Button
         android:id="@+id/update_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="Update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -99,4 +98,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/update_btn" />
+
+    <EditText
+        android:id="@+id/weight_editTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Weight"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restTime_editTxt" />
+
 </android.support.constraint.ConstraintLayout>

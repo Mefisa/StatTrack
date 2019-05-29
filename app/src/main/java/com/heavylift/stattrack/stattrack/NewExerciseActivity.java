@@ -15,6 +15,7 @@ public class NewExerciseActivity extends AppCompatActivity {
     private EditText mName_editTxt;
     private EditText mSets_editTxt;
     private EditText mReps_editTxt;
+    private EditText mWeight_editTxt;
     private EditText mRestTime_editTxt;
 
     private Spinner mExercise_categories_spinner;
@@ -31,6 +32,7 @@ public class NewExerciseActivity extends AppCompatActivity {
         mSets_editTxt = (EditText) findViewById(R.id.sets_editTxt);
         mReps_editTxt = (EditText) findViewById(R.id.reps_editTxt);
         mRestTime_editTxt = (EditText) findViewById(R.id.restTime_editTxt);
+        mWeight_editTxt = (EditText) findViewById(R.id.weight_editTxt);
 
         mExercise_categories_spinner = (Spinner) findViewById(R.id.exercise_categories_spinner);
 
@@ -42,9 +44,10 @@ public class NewExerciseActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Exercise exercise = new Exercise();
                 exercise.setName(mName_editTxt.getText().toString());
-                exercise.setSets(mName_editTxt.getText().toString());
+                exercise.setSets(mSets_editTxt.getText().toString());
                 exercise.setReps(mReps_editTxt.getText().toString());
                 exercise.setRest_time(mRestTime_editTxt.getText().toString());
+                exercise.setWeight(mWeight_editTxt.getText().toString());
                 new FirebaseDatabaseHelper().addExercise(exercise, new FirebaseDatabaseHelper.DataStatus() {
                     @Override
                     public void DataIsLoaded(List<Exercise> exercises, List<String> keys) {

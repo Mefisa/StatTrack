@@ -30,6 +30,7 @@ public class RecyclerView_Config {
         private TextView mReps;
         private TextView mSets;
         private TextView mRestTime;
+        private TextView mWeight;
 
         private String key;
 
@@ -41,6 +42,7 @@ public class RecyclerView_Config {
             mReps = itemView.findViewById(R.id.reps_txtView);
             mSets = itemView.findViewById(R.id.sets_txtView);
             mRestTime = itemView.findViewById(R.id.restTime_txtView);
+            mWeight = itemView.findViewById(R.id.weight_txtView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -51,6 +53,7 @@ public class RecyclerView_Config {
                     intent.putExtra("reps", mReps.getText().toString());
                     intent.putExtra("sets", mSets.getText().toString());
                     intent.putExtra("restTime", mRestTime.getText().toString());
+                    intent.putExtra("weight", mWeight.getText().toString());
 
 
                     mContext.startActivity(intent);
@@ -62,7 +65,8 @@ public class RecyclerView_Config {
             mName.setText("exercise name: " + exercise.getName());
             mReps.setText("reps: " + exercise.getReps());
             mSets.setText("sets: " + exercise.getSets());
-            mRestTime.setText("rest time " + exercise.getRest_time());
+            mRestTime.setText("rest time: " + exercise.getRest_time());
+            mWeight.setText("weight: " + exercise.getWeight());
             this.key = key;
         }
 
