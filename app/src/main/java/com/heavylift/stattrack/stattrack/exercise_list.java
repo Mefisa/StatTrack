@@ -9,15 +9,22 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.List;
 
 public class exercise_list extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_list);
+
+        mAuth = FirebaseAuth.getInstance();
         mRecyclerView = findViewById(R.id.recyclerview_exercises);
         new FirebaseDatabaseHelper().readExercises(new FirebaseDatabaseHelper.DataStatus() {
             @Override
@@ -44,9 +51,34 @@ public class exercise_list extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        FirebaseUser user = mAuth.getCurrentUser();
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.exerciselist_activity_menu, menu);
-        return true;
+        if (user != null) {
+            menu.getItem(0).setVisible(true); // new exercise
+            menu.getItem(1).setVisible(false); // sign in
+            menu.getItem(2).setVisible(true); // sign out
+        } else {
+            menu.getItem(0).setVisible(false); // new exercise
+            menu.getItem(1).setVisible(true); // sign in
+            menu.getItem(2).setVisible(false); // sign out
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            menu.getItem(0).setVisible(true); // new exercise
+            menu.getItem(1).setVisible(false); // sign in
+            menu.getItem(2).setVisible(true); // sign out
+        } else {
+            menu.getItem(0).setVisible(false); // new exercise
+            menu.getItem(1).setVisible(true); // sign in
+            menu.getItem(2).setVisible(false); // sign out
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -54,6 +86,14 @@ public class exercise_list extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.new_exercise:
                 startActivity(new Intent(this, NewExerciseActivity.class));
+                return true;
+            case R.id.sign_in:
+                startActivity(new Intent(this, SignupPage.class));
+                return true;
+            case R.id.sign_out:
+                mAuth.signOut();
+                invalidateOptionsMenu();
+                RecyclerView_Config.logout();
                 return true;
         }
         return super.onOptionsItemSelected(item);

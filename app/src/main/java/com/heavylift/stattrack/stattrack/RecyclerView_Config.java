@@ -10,14 +10,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.List;
 
 public class RecyclerView_Config {
+    FirebaseAuth mAuth;
+    private static FirebaseUser user;
+
     private Context mContext;
     private ExerciseAdapter mExerciseAdapter;
 
+
     public void setConfig(RecyclerView recyclerView, Context context, List<Exercise> exercises,
                           List<String> keys) {
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
         mContext = context;
         mExerciseAdapter = new ExerciseAdapter(exercises, keys);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -34,6 +44,7 @@ public class RecyclerView_Config {
 
         private String key;
 
+
         public ExerciseItemView(ViewGroup parent){
             super(LayoutInflater.from(mContext).
                     inflate(R.layout.exercise_list_item, parent, false));
@@ -47,16 +58,20 @@ public class RecyclerView_Config {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, ExerciseDetailsActivity.class);
-                    intent.putExtra("key", key);
-                    intent.putExtra("name", mName.getText().toString());
-                    intent.putExtra("reps", mReps.getText().toString());
-                    intent.putExtra("sets", mSets.getText().toString());
-                    intent.putExtra("restTime", mRestTime.getText().toString());
-                    intent.putExtra("weight", mWeight.getText().toString());
+                    if (user != null) {
+                        Intent intent = new Intent(mContext, ExerciseDetailsActivity.class);
+                        intent.putExtra("key", key);
+                        intent.putExtra("name", mName.getText().toString());
+                        intent.putExtra("reps", mReps.getText().toString());
+                        intent.putExtra("sets", mSets.getText().toString());
+                        intent.putExtra("restTime", mRestTime.getText().toString());
+                        intent.putExtra("weight", mWeight.getText().toString());
+                        mContext.startActivity(intent);
+                    } else {
+                        mContext.startActivity(new Intent(mContext, SignupPage.class));
+                    }
 
 
-                    mContext.startActivity(intent);
                 }
             });
         }
@@ -70,7 +85,11 @@ public class RecyclerView_Config {
             this.key = key;
         }
 
+
+
     }
+
+
     class ExerciseAdapter extends RecyclerView.Adapter<ExerciseItemView> {
         private List<Exercise> mExerciseList;
         private List<String> mKeys;
@@ -94,5 +113,9 @@ public class RecyclerView_Config {
         public int getItemCount() {
             return mExerciseList.size();
         }
+    }
+
+    public static void logout(){
+        user = null;
     }
 }

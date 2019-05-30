@@ -28,7 +28,7 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
     private String reps;
     private String sets;
     private String restTime;
-
+    private String weight;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,7 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
         reps = getIntent().getStringExtra("reps");
         sets = getIntent().getStringExtra("sets");
         restTime = getIntent().getStringExtra("restTime");
+        weight = getIntent().getStringExtra("weight");
 
         mName_editTxt = (EditText) findViewById(R.id.name_editTxt);
         mReps_editTxt = (EditText) findViewById(R.id.reps_editTxt);
@@ -48,6 +49,17 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
         mExercise_categories_spinner = (Spinner) findViewById(R.id.exercise_categories_spinner);
         //mExercise_categories_spinner.setSelection(getIndex_SpinnerItem(mExercise_categories_spinner,
         //        ));
+
+        sets = sets.replace("Sets: ", "");
+        reps = reps.replace("Reps: ", "");
+        restTime = restTime.replace("Rest Time: ", "");
+        weight = weight.replace("Weight: ", "");
+
+        mName_editTxt.setText(name);
+        mReps_editTxt.setText(reps);
+        mSets_editTxt.setText(sets);
+        mRestTime_editTxt.setText(restTime);
+        mWeight_editTxt.setText(weight);
 
         mUpdate_btn = (Button) findViewById(R.id.update_btn);
         mDelete_btn = (Button) findViewById(R.id.delete_btn);
@@ -62,6 +74,7 @@ public class ExerciseDetailsActivity extends AppCompatActivity {
                 exercise.setSets(mSets_editTxt.getText().toString());
                 exercise.setRest_time(mRestTime_editTxt.getText().toString());
                 exercise.setWeight(mWeight_editTxt.getText().toString());
+
 
                 new FirebaseDatabaseHelper().updateExercise(key, exercise, new FirebaseDatabaseHelper.DataStatus() {
                     @Override

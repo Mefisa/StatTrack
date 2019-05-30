@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".NewExerciseActivity" />
         <activity android:name=".ExerciseDetailsActivity"></activity>
+        <activity android:name=".SignupPage"></activity>
     </application>
 
 </manifest>
