@@ -79,6 +79,7 @@ public class SignupPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isEmpty()) return;
+                if (isBadPassword()) return;
                 inProgress(true);
                 mAuth.createUserWithEmailAndPassword(mEmail_editTxt.getText().toString(),
                         mPassword_editTxt.getText().toString())
@@ -130,6 +131,27 @@ public class SignupPage extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    private boolean isBadPassword(){
+        String s = mPassword_editTxt.getText().toString();
+        boolean hasCharacter = false;
+        boolean hasNumber = false;
+        boolean hasSpecial = false;
+        int length = s.length();
+        for (int i = 0; i < length; i++){
+            int asciiVal = (int) s.charAt(i);
+            if ((asciiVal >= 65 && asciiVal <= 90)|| (asciiVal >= 97 && asciiVal <= 122)){
+                hasCharacter = true;
+            } else if (asciiVal >= 48 && asciiVal <= 57){
+                hasNumber = true;
+            } else if (asciiVal >= 33 && asciiVal <= 126) {
+                hasSpecial = true;
+            }
+        }
+        if (hasCharacter && hasNumber && hasSpecial) return false;
+        mPassword_editTxt.setError("Must contain number, character and special character");
+        return true;
     }
 
 
