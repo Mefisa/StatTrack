@@ -1,0 +1,30 @@
+##################################################################################################################
+
+$$$$$$\    $$\                $$\  $$$$$$$$\                           $$\       
+$$  __$$\   $$ |               $$ | \__$$  __|                          $$ |      
+$$ /  \__|$$$$$$\    $$$$$$\ $$$$$$\   $$ | $$$$$$\  $$$$$$\   $$$$$$$\ $$ |  $$\ 
+\$$$$$$\  \_$$  _|   \____$$\\_$$  _|  $$ |$$  __$$\ \____$$\ $$  _____|$$ | $$  |
+ \____$$\   $$ |     $$$$$$$ | $$ |    $$ |$$ |  \__|$$$$$$$ |$$ /      $$$$$$  / 
+$$\   $$ |  $$ |$$\ $$  __$$ | $$ |$$\ $$ |$$ |     $$  __$$ |$$ |      $$  _$$<  
+\$$$$$$  |  \$$$$  |\$$$$$$$ | \$$$$  |$$ |$$ |     \$$$$$$$ |\$$$$$$$\ $$ | \$$\ 
+ \______/    \____/  \_______|  \____/ \__|\__|      \_______| \_______|\__|  \__|
+                                                                                  
+                                                                                  
+##################################################################################################################
+
+Planning Phase:
+	Plan Work
+	Design UI using a mocking program (figma?)
+	Decide on functionality and tech stack
+	Plan a timeline and give estimates to each task (add subtasks)
+
+1. Refactor to use Firestore
+
+2. Change UI to match mocks
+
+3. Add Authentication for users, store data securely
+
+4. Data:
+	Decide on how to track progress, develop formulas for each exercise
+	Some data processing to show this progress in a graphical way (maybe a spark job with a cloud microservice?)
+ 

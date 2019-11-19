@@ -7,14 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class exercise_list extends AppCompatActivity {
+public class ExerciseList extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private FirebaseAuth mAuth;
@@ -29,7 +28,7 @@ public class exercise_list extends AppCompatActivity {
         new FirebaseDatabaseHelper().readExercises(new FirebaseDatabaseHelper.DataStatus() {
             @Override
             public void DataIsLoaded(List<Exercise> exercises, List<String> keys) {
-                new RecyclerView_Config().setConfig(mRecyclerView, exercise_list.this,
+                new RecyclerViewConfig().setConfig(mRecyclerView, ExerciseList.this,
                         exercises, keys);
             }
 
@@ -93,7 +92,7 @@ public class exercise_list extends AppCompatActivity {
             case R.id.sign_out:
                 mAuth.signOut();
                 invalidateOptionsMenu();
-                RecyclerView_Config.logout();
+                RecyclerViewConfig.logout();
                 return true;
         }
         return super.onOptionsItemSelected(item);

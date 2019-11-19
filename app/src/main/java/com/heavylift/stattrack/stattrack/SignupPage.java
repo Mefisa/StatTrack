@@ -15,8 +15,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.String;
 
@@ -59,7 +57,7 @@ public class SignupPage extends AppCompatActivity {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(SignupPage.this, "Signing in", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(SignupPage.this, exercise_list.class);
+                        Intent intent = new Intent(SignupPage.this, ExerciseList.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();

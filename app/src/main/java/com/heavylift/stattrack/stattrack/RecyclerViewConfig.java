@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class RecyclerView_Config {
+public class RecyclerViewConfig {
     FirebaseAuth mAuth;
     private static FirebaseUser user;
 
